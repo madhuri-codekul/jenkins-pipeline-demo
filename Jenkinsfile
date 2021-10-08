@@ -52,7 +52,7 @@ pipeline { // root
                             echo 'pulling ..'+ env.GIT_BRANCH
 
                            // sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
-                            sh 'docker run -itd -p  8081:8081 docker-image/spring-boot-docker-image-aws:${BUILD_NUMBER}'
+                            sh 'docker run -itd -p  8081:8081 docker-image/spring-boot-docker-image:${BUILD_NUMBER}'
                           }
 
         }
