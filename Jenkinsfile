@@ -38,7 +38,7 @@ pipeline { // root
 
             steps {
 
-                     sh 'docker stop $(docker ps --filter publish=8082/tcp -q)'
+                     sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
                      sh 'docker run -itd -p  8081:8081 docker-image/spring-boot-docker-image:${BUILD_NUMBER}'
             }
         }
