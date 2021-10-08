@@ -31,15 +31,15 @@ pipeline { // root
             }
         }
 
-        stage('deploy on production'){   // if branch is production then run the docker image on 8082
+        stage('deploy on development'){   // if branch is production then run the docker image on 8082
               when{
-                    expression{ env.GIT_BRANCH =='origin/production'}
+                    expression{ env.GIT_BRANCH =='origin/dev'}
                   }
 
             steps {
 
-                     sh 'docker stop $(docker ps --filter publish=8082/tcp -q)'
-                     sh 'docker run -itd -p  8082:8082 vaibhavnerle/docker-jenkins-aws:${BUILD_NUMBER}'
+                    // sh 'docker stop $(docker ps --filter publish=8082/tcp -q)'
+                     sh 'docker run -itd -p  8081:8081 docker-image/spring-boot-docker-image:${BUILD_NUMBER}'
             }
         }
 
@@ -51,8 +51,8 @@ pipeline { // root
                     steps {
                             echo 'pulling ..'+ env.GIT_BRANCH
 
-                            sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
-                            sh 'docker run -itd -p  8081:8081 vaibhavnerle/docker-jenkins-aws:${BUILD_NUMBER}'
+                           // sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
+                            sh 'docker run -itd -p  8081:8081 docker-image/spring-boot-docker-image-aws:${BUILD_NUMBER}'
                           }
 
         }
