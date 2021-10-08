@@ -25,11 +25,11 @@ pipeline { // root
             }
         } */
 
-        stage('Docker Push'){    // push the image to docker hub
+        /* stage('Docker Push'){    // push the image to docker hub
              steps {
                 sh 'docker push docker-image/spring-boot-docker-image:${BUILD_NUMBER}'
             }
-        }
+        } */
 
         stage('deploy on dev'){   // if branch is production then run the docker image on 8082
               when{
