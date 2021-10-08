@@ -22,12 +22,12 @@ pipeline { // root
                  withCredentials([string(credentialsId: 'vaibhavnerle', variable: 'Dockerpwd')]) {
                     sh "docker login -u vaibhavnerle -p ${Dockerpwd}"
                 }
-            } */
-        }
+            }
+        } */
 
         stage('Docker Push'){    // push the image to docker hub
              steps {
-                sh 'docker push  docker-image/spring-boot-docker-image:${BUILD_NUMBER}'
+                sh 'docker push docker-image/spring-boot-docker-image:${BUILD_NUMBER}'
             }
         }
 
