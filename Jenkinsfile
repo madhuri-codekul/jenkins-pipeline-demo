@@ -31,7 +31,7 @@ pipeline { // root
             }
         }
 
-        stage('deploy on development'){   // if branch is production then run the docker image on 8082
+        stage('deploy on dev'){   // if branch is production then run the docker image on 8082
               when{
                     expression{ env.GIT_BRANCH =='origin/dev'}
                   }
