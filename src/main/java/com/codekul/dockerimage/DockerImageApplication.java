@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DockerImageApplication {
 	@RequestMapping("/")
 	public String home() {
-		return "Docker running successfully123";
+		return "Docker running successfully on bitbucket";
 	}
 
 	public static void main(String[] args) {
