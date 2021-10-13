@@ -46,7 +46,7 @@ pipeline { // root
                   }
 
             steps {
-            def var = 'sh docker images docker-image/spring-boot-docker-image'
+            def var = sh 'docker images docker-image/spring-boot-docker-image'
 
                 echo 'docker dje ${var}'
 
@@ -60,7 +60,8 @@ pipeline { // root
                 expression{ env.GIT_BRANCH =='origin/master'}
               }
                     steps {
-      def var = 'sh docker images docker-image/spring-boot-docker-image'
+                def var = sh 'docker images docker-image/spring-boot-docker-image'
+
 
                   echo 'docker dje ${var}'
                             echo 'pulling ..'+ env.GIT_BRANCH
