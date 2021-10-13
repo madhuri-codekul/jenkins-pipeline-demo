@@ -37,8 +37,9 @@ pipeline { // root
                   }
 
             steps {
-
-                    // sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
+                     def inspectExitCode = sh 'sudo netstat -tunlp|grep 8081'
+                     echo 'check port ' + inspectExitCode
+                     sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
                      sh 'docker run -itd -p  8081:8081 docker-image/spring-boot-docker-image:${BUILD_NUMBER}'
             }
         }
@@ -49,19 +50,19 @@ pipeline { // root
                 expression{ env.GIT_BRANCH =='origin/master'}
               }
                     steps {
+                    def inspectExitCode = sh 'sudo netstat -tunlp|grep 8081'
+                    echo 'check port ' + inspectExitCode
+                    //script: "docker service inspect loginService", returnStatus: true
                             echo 'pulling ..'+ env.GIT_BRANCH
-
-                       //     sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
+                            sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
                             sh 'docker run -itd -p  8081:8081 docker-image/spring-boot-docker-image:${BUILD_NUMBER}'
                           }
-
         }
 
         stage('Archiving') { //result of build process
             steps {
                  archiveArtifacts '**/target/*.jar'
             }
-
         }
     }
 }
