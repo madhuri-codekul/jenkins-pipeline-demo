@@ -32,7 +32,9 @@ pipeline { // root
         } */
 
         stage('Dangling Containers') {
-              sh 'docker system prune -af --volumes'
+            steps{
+                          sh 'docker system prune -af --volumes'
+                }
             }
 
 
