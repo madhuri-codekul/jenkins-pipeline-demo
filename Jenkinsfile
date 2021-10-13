@@ -1,7 +1,7 @@
 pipeline {
   environment {
     imageName = "docker-image/webapp"
-    registryCredential = 'docker-image-webapp'
+   // registryCredential = 'docker-image-webapp'
     dockerImage = ''
   }
   agent any
@@ -16,7 +16,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
+         // docker.withRegistry( '', registryCredential ) {
             dockerImage.push("$BUILD_NUMBER")
              dockerImage.push('latest')
 
