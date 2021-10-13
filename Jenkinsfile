@@ -46,7 +46,7 @@ pipeline {
                   //  sh 'docker rmi docker-image/spring-boot-docker-image:current'
                  //   sh 'docker tag docker-image/spring-boot-docker-image:latest docker-image/spring-boot-docker-image:current'
                  //   sh 'docker run -d — name spring-boot-docker-image -p 8081:8081 docker-image/spring-boot-docker-image:latest'
-                   //  sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
+                     sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
                    sh 'docker run -itd -p  8081:8081 $imageName:${BUILD_NUMBER}'
             }
         }
@@ -64,7 +64,7 @@ pipeline {
                        //     sh 'docker rmi docker-image/spring-boot-docker-image:current'
                       //      sh 'docker tag docker-image/spring-boot-docker-image:latest docker-image/spring-boot-docker-image:current'
                       //      sh 'docker run -d — name spring-boot-docker-image -p 8081:8081 docker-image/spring-boot-docker-image:latest'
-                           // sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
+                            sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
                                             sh 'docker run -itd -p  8081:8081 $imageName:${BUILD_NUMBER}'
 
                           }
