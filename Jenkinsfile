@@ -31,6 +31,11 @@ pipeline { // root
             }
         } */
 
+        stage('Dangling Containers') {
+              sh 'docker system prune -af --volumes'
+            }
+
+
         stage('deploy on dev'){   // if branch is production then run the docker image on 8082
               when{
                     expression{ env.GIT_BRANCH =='origin/dev'}
