@@ -46,16 +46,11 @@ pipeline { // root
                   }
 
             steps {
-            def var = sh 'docker images 'docker-image/spring-boot-docker-image'
+            def var = 'sh docker images docker-image/spring-boot-docker-image'
 
                 echo 'docker dje ${var}'
-                   // sh 'docker stop spring-boot-docker-image'
-                  //  sh 'docker rm spring-boot-docker-image'
-                  //  sh 'docker rmi docker-image/spring-boot-docker-image:current'
-                 //   sh 'docker tag docker-image/spring-boot-docker-image:latest docker-image/spring-boot-docker-image:current'
-                  //  sh 'docker run -d — name spring-boot-docker-image -p 8081:8081 docker-image/spring-boot-docker-image:latest'
-                   //  sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
-                  //   sh 'docker run -itd -p  8081:8081 docker-image/spring-boot-docker-image:${BUILD_NUMBER}'
+
+                  //   sh 'docker run -itd -p  8081:8081 docker-image/spring-boot-docker-image:${BUILD_NUMBER}' */
             }
         }
 
@@ -65,9 +60,9 @@ pipeline { // root
                 expression{ env.GIT_BRANCH =='origin/master'}
               }
                     steps {
-   def var = sh 'docker images 'docker-image/spring-boot-docker-image'
+      def var = 'sh docker images docker-image/spring-boot-docker-image'
 
-                echo 'docker dje ${var}'
+                  echo 'docker dje ${var}'
                             echo 'pulling ..'+ env.GIT_BRANCH
                          //   sh 'docker stop spring-boot-docker-image'
                         //    sh 'docker rm spring-boot-docker-image'
