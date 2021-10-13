@@ -9,6 +9,12 @@ pipeline { // root
             }
         }
 
+         stage('Dangling Containers') {
+                    steps{
+                                  sh 'docker system prune -af --volumes'
+                        }
+                    }
+
         stage('Build Docker image'){// Build the docker image
             steps {
 
@@ -31,11 +37,7 @@ pipeline { // root
             }
         } */
 
-        stage('Dangling Containers') {
-            steps{
-                          sh 'docker system prune -af --volumes'
-                }
-            }
+
 
 
         stage('deploy on dev'){   // if branch is production then run the docker image on 8082
